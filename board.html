@@ -18,11 +18,10 @@
       background-color: #f0d9b5; /* 棋盤底色 */
     }
 
-    .cell {
+        .cell_black {
       width: 50px;
       height: 50px;
-       border-radius: 50%; 
-      /*border: 1px solid #999;*/
+      border-radius: 50%; 
       border: none;
       
       box-sizing: border-box;
@@ -30,6 +29,25 @@
       cursor: pointer;
       
     }
+    .cell_black:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .cell_white {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%; 
+      border: none;
+    
+      box-sizing: border-box;
+      position: relative;
+      cursor: pointer;
+      
+    }
+    .cell_white:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
 
 
     .center-line-horizontal {
@@ -52,17 +70,13 @@
         transform: translateX(-50%);
     }
 
-    .cell:hover {
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-
     .stone {
-      width: 120%;
-      height: 120%;
+      width: 128%;
+      height: 128%;
       border-radius: 50%;
       position: relative;
-      top: -10%;
-      left: -10%;
+      top: -14%;
+      left: -14%;
     }
 
     
