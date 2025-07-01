@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>五子棋 19x19</title>
+  <style>
+    .board {
+      width: 950px;
+      height: 950px;
+      display: grid;
+      grid-template-columns: repeat(19, 50px);
+      grid-template-rows: repeat(19, 50px);
+     
+      /*border: 2px solid #333; */
+      border: none;
+      margin: 20px auto;
+      position: relative;
+      background-color: #f0d9b5; /* 棋盤底色 */
+    }
+
+    .cell {
+      width: 50px;
+      height: 50px;
+       border-radius: 50%; 
+      /*border: 1px solid #999;*/
+      border: none;
+      
+      box-sizing: border-box;
+      position: relative;
+      cursor: pointer;
+      
+    }
+
+
+    .center-line-horizontal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        transform: translateY(-50%);
+    }
+
+    .center-line-vertical {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2px;
+        height: 100%;
+        background-color: black;
+        transform: translateX(-50%);
+    }
+
+    .cell:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .stone {
+      width: 120%;
+      height: 120%;
+      border-radius: 50%;
+      position: relative;
+      top: -10%;
+      left: -10%;
+    }
+
+    .black {
+      /* background-color: black; */
+    }
+
+    .white {
+      /* background-color: white; */
+      /* border: 1px solid #000; */
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">五子棋 19x19 棋盤</h2>
+    
+  <div class="board" id="board"></div>
+  <div class="board_btn" id="boardhehe"></div>
+
+  <script>
+    const board = document.getElementById("board");
+    const size = 19;
+    let currentPlayer = 'black';
+
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size; j++) {
+        const cell = document.createElement("div");
+        cell.className = "cell";
+        
+        cell.dataset.row = i;
+        cell.dataset.col = j;
+        
+        cell.addEventListener("click", function () {
+          if (cell.querySelector(".stone")) return; // 已有棋子不能再放
+
+          const stone = document.createElement("img");
+          stone.className = "stone " + currentPlayer;
+          stone.src = "Assets/" + currentPlayer + "stone.png"
+          cell.appendChild(stone);
+
+          // 換邊
+          currentPlayer = (currentPlayer === "black") ? "white" : "black";
+          
+        });
+
+        const h_line = document.createElement("div");
+        const v_line = document.createElement("div");
+        h_line.className = "center-line-horizontal"
+        v_line.classList = "center-line-vertical"
+        if (i < size - 1) cell.appendChild(v_line);
+        if (j < size - 1) cell.appendChild(h_line);
+        board.appendChild(cell);
+      }
+    }
+  </script>
+
+</body>
+</html>
