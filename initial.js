@@ -3,6 +3,11 @@ let size = 19;
 
 let matrix = Array.from({ length: size }, () => Array(size).fill(0));
 
+function reset(){
+    document.getElementById("board").innerHTML = "" // Clear the Board
+    Init();
+}
+
 function CheckWin() {
     let dx = [0, 1, 1, 1]
     let dy = [1, 0, 1, -1]
