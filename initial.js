@@ -26,17 +26,8 @@ function CheckWin() {
     }
     return 0;
 };
-
-function Clear() {
-    for (let i = 0; i < size; i++) {
-        for (let j = 0; j < size; j++) {
-            document.getElementById(String(i * size + j)).remove();
-        }
-    }
-}
 function Init() {
     let currentPlayer = 'black';
-
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
             matrix[i][j] = 0;
@@ -67,7 +58,7 @@ function Init() {
                 let res = CheckWin();
                 if (res != 0) {
                     alert((res == 1 ? "Black" : "White") + " wins");
-                    Clear();
+                    document.getElementById("board").innerHTML = "" // Clear the Board
                     Init();
                 }
             });
